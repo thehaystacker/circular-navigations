@@ -5,25 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="./font-awesome/fontawesome.min.css">
+  <link rel="stylesheet" href="./fontawesome/css/all.min.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-  <div class="btn-wrap">
-    <button class="cnt-btn" id="cnt-btn"><i class="fas fa-plus"></i></button>
-    <div class="cnt-nav-wrapper">
+  <div class="csstransforms">
+    <button class="cn-button" id="cn-button"><i class="fas fa-plus"></i></button>
+    <div class="cn-wrapper" id="cn-wrapper">
       <ul>
-        <li><a href="#"><i class="fas fa-user-plus"></i></a></li>
-        <li><a href="#"><i class="fas fa-google-plus"></i></a></li>
-        <li><a href="#"><i class="fas fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fas fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fas fa-share-alt-square"></i></a></li>
+        <li><a href="#"><i class="fas fa-address-book"></i></a></li>
+        <li><a href="#"><i class="fas fa-adjust"></i></a></li>
+        <li><a href="#"><i class="fas fa-angry"></i></a></li>
+        <li><a href="#"><i class="fas fa-archive"></i></a></li>
+        <li><a href="#"><i class="fas fa-backward"></i></a></li>
       </ul>
     </div>
 
-    <div class="cnt-overlay" id="cnt-overlay"></div>
+    <div class="cn-overlay" id="cn-overlay"></div>
   </div>
   
+  <script>
+    (function(){
+
+var button = document.getElementById('cn-button'),
+  wrapper = document.getElementById('cn-wrapper'),
+  overlay = document.getElementById('cn-overlay');
+
+//open and close menu when the button is clicked
+var open = false;
+button.addEventListener('click', handler, false);
+button.addEventListener('focus', handler, false);
+wrapper.addEventListener('click', cnhandle, false);
+
+function cnhandle(e){
+  e.stopPropagation();
+}
+
+function handler(e){
+  if (!e) var e = window.event;
+  e.stopPropagation();//so that it doesn't trigger click event on document
+
+    if(!open){
+      openNav();
+    }
+  else{
+      closeNav();
+    }
+}
+function openNav(){
+  open = true;
+    button.innerHTML = "-";
+    classie.add(overlay, 'on-overlay');
+    classie.add(wrapper, 'opened-nav');
+}
+function closeNav(){
+  open = false;
+  button.innerHTML = "+";
+  classie.remove(overlay, 'on-overlay');
+  classie.remove(wrapper, 'opened-nav');
+}
+document.addEventListener('click', closeNav);
+
+})();
+  </script>
 </body>
 </html>
